@@ -21,6 +21,6 @@ Route::get('user', function () {
     return \App\User::all();
 });
 
-Route::resource('articles', 'ArticleController');
+Route::resource('articles', 'Admin\ArticleController');
 
-Route::post('articles/batch', 'ArticleController@batch');
+Route::post('articles/batch', 'Admin\ArticleController@batch');

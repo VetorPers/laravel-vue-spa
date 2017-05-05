@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/vtr',function(){
+Route::get('/vtr', function () {
     return view('web');
 })->middleware('auth');
+
+Route::resource('articles', 'ArticleController');
 
