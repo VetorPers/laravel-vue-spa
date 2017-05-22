@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticleController@index');
+Route::get('/articles/{id}', 'ArticleController@show');
 
 Auth::routes();
 
@@ -23,5 +22,5 @@ Route::get('/vtr', function () {
     return view('web');
 })->middleware('auth');
 
-Route::resource('articles', 'ArticleController');
-
+Route::get('/questions', 'QuestionController@index');
+Route::get('/questions/{id}', 'QuestionController@show');
