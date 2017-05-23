@@ -38,3 +38,19 @@ $factory->define(App\Question::class, function (Faker\Generator $faker) {
         'body' => $faker->paragraph(50),
     ];
 });
+
+$factory->define(App\Answer::class, function (Faker\Generator $faker) {
+    return [
+        'question_id' => 1,
+        'user_id' => 1,
+        'body' => $faker->text(),
+    ];
+});
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'answer_id' => 1,
+        'user_id' => 1,
+        'body' => $faker->text(),
+    ];
+});

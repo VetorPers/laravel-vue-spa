@@ -26,7 +26,7 @@
         <div class="container">
             <div class="nav-left">
                 <a class="nav-item">
-                    {{ config('app.name', 'Laravel') }}
+                    {{--<img src="{{asset('img/vtr.png')}}" alt="">--}}
                 </a>
                 <a class="nav-item is-tab is-hidden-mobile is-active" href="{{url('/')}}">首页</a>
                 <a class="nav-item is-tab is-hidden-mobile">Features</a>
