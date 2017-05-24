@@ -20,12 +20,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'avatar' => $faker->imageUrl(200, 200)
     ];
 });
 
 $factory->define(App\Article::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->title,
+        'title' => $faker->word,
         'user_id' => 1,
         'body' => $faker->paragraph,
     ];
@@ -33,7 +34,7 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Question::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->title,
+        'title' => $faker->word,
         'user_id' => 1,
         'body' => $faker->paragraph(50),
     ];

@@ -1,3 +1,22 @@
-.tac {
-    margin-top: -22px;
+.border-radius > img {
+    border: 1px solid #00d1b2;
+    border-radius: 10px;
+}
+
+.user-statics {
+    margin-top: 20px;
+    display: flex;
+}
+
+.statics-item {
+    padding: 2px 20px;
+    text-align: center;
+}
+
+.statics-text {
+    color: #8590a6;
+}
+
+.statics-count{
+    text-align: center;
 }

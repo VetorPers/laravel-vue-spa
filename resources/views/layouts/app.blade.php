@@ -11,8 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -20,7 +20,7 @@
         ]) !!};
     </script>
 </head>
-<body>
+<body style="background-color: #F7F8FA">
 <div id="app">
     <nav class="nav has-shadow">
         <div class="container">
@@ -47,14 +47,10 @@
         </div>
     </nav>
 
-    <section class="section">
-        <div class="container">
-            @yield('content')
-        </div>
-    </section>
+    @yield('content')
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
