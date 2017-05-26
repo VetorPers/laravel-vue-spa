@@ -26,12 +26,8 @@
         <div class="container">
             <div class="nav-left">
                 <a class="nav-item">
-                    {{--<img src="{{asset('img/vtr.png')}}" alt="">--}}
+                    <img src="{{asset('img/vtr.png')}}" alt="">
                 </a>
-                <a class="nav-item is-tab is-hidden-mobile is-active" href="{{url('/')}}">首页</a>
-                <a class="nav-item is-tab is-hidden-mobile">Features</a>
-                <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
-                <a class="nav-item is-tab is-hidden-mobile">About</a>
             </div>
     <span class="nav-toggle">
       <span></span>
@@ -39,10 +35,16 @@
       <span></span>
     </span>
             <div class="nav-right nav-menu">
+                <a class="nav-item is-tab is-hidden-mobile" href="{{url('/')}}">首页</a>{{--todo:is-active 设置a标签的点击事件--}}
                 <a class="nav-item is-tab" href="{{url('questions')}}">
                     微微的社区
                 </a>
-                <a class="nav-item is-tab">退出</a>
+                @if (Auth::guest())
+                    <a class="nav-item is-tab">登录</a>
+                    <a class="nav-item is-tab">注册</a>
+                @else
+                    <a class="nav-item is-tab">退出</a>
+                @endif
             </div>
         </div>
     </nav>

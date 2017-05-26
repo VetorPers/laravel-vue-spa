@@ -11,6 +11,7 @@
 |
 */
 
+Auth::loginUsingId(2);
 Route::get('/', 'ArticleController@index');
 Route::get('/articles/{id}', 'ArticleController@show');
 

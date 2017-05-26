@@ -5,15 +5,19 @@
         <div class="column">
             @if($inf)
                 <div class="tile is-parent box">
-                    <article class="tile is-child">
-                        <p class="title">{{$inf->title}}</p>
-                        <div class="content">
-                            {{$inf->body}}
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <article class="tile is-child">
+                                <p class="title"><strong>{{$inf->title}}</strong></p>
+                                <div class="content">
+                                    {{$inf->body}}
+                                </div>
+                                <p>
+                                    <small>10条评论</small>
+                                </p>
+                            </article>
                         </div>
-                        <p>
-                            <small>10条评论</small>
-                        </p>
-                    </article>
+                    </div>
                 </div>
 
                 <div class="container">

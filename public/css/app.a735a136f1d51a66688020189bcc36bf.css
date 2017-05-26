@@ -1,3 +1,7 @@
+body, html {
+    height: 100%;
+}
+
 .border-radius > img {
     border: 1px solid #00d1b2;
     border-radius: 10px;
@@ -17,7 +21,7 @@
     color: #8590a6;
 }
 
-.statics-count{
+.statics-count {
     text-align: center;
 }
 
