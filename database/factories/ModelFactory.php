@@ -40,6 +40,14 @@ $factory->define(App\Question::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Topic::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'bio'=>$faker->paragraph,
+        'questions_count'=>1
+    ];
+});
+
 $factory->define(App\Answer::class, function (Faker\Generator $faker) {
     return [
         'question_id' => 1,

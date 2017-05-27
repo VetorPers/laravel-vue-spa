@@ -23,5 +23,4 @@ Route::get('/vtr', function () {
     return view('web');
 })->middleware('auth');
 
-Route::get('/questions', 'QuestionController@index');
-Route::get('/questions/{id}', 'QuestionController@show');
+Route::resource('/questions', 'QuestionController');

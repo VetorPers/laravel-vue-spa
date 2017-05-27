@@ -20,7 +20,7 @@
         ]) !!};
     </script>
 </head>
-<body style="background-color: #F7F8FA">
+<body>
 <div id="app">
     <nav class="nav has-shadow">
         <div class="container">
@@ -39,6 +39,7 @@
                 <a class="nav-item is-tab" href="{{url('questions')}}">
                     微微的社区
                 </a>
+                <a class="nav-item is-tab" href="{{url('questions/create')}}">提问</a>
                 @if (Auth::guest())
                     <a class="nav-item is-tab">登录</a>
                     <a class="nav-item is-tab">注册</a>
@@ -54,5 +55,13 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.config.js') }}"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.all.js') }}"></script>
+<script>
+    window.UEDITOR_CONFIG.serverUrl = '{{ config('ueditor.route.name') }}'
+</script>
+@stack('scripts')
 </body>
 </html>
