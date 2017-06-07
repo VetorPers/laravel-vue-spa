@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreQuestionRequest;
 use App\Repositories\QuestionRepository;
 use Illuminate\Http\Request;
+use Auth;
 
 class QuestionController extends Controller
 {
@@ -34,5 +36,22 @@ class QuestionController extends Controller
     public function create()
     {
         return view('questions.add');
+    }
+
+    public function store(StoreQuestionRequest $request)
+    {
+        $topics = $this->questionRepository->normalizeTopics($request->get('topics'));
+
+        $data = [
+            'title' => $request->get('title'),
+            'body' => $request->get('body'),
+            'user_id' => Auth::id()
+        ];
+        $question = $this->questionRepository->create($data);
+        Auth::user()->increment('questions_count');
+
+        $question->topics()->attach($topics);
+
+        return redirect()->route('questions.show', [$question->id]);
     }
 }

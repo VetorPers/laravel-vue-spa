@@ -24,3 +24,5 @@ Route::get('user', function () {
 Route::resource('articles', 'Admin\ArticleController');
 
 Route::post('articles/batch', 'Admin\ArticleController@batch');
+
+Route::get('/topics','TopicsController@index');

@@ -1,6 +1,11 @@
 body, html {
     height: 100%;
-    background-color: #F7F8FA;!important;
+    background-color: #F7F8FA;
+!important;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 #app {
@@ -12,8 +17,16 @@ body, html {
     border-radius: 10px;
 }
 
+.topics{
+    margin-bottom: 10px;
+}
+
 .user-statics {
     margin-top: 20px;
+    display: flex;
+}
+
+.question-statics{
     display: flex;
 }
 

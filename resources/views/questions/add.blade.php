@@ -24,8 +24,8 @@
                                 <select name="topics[]"
                                         class="js-example-placeholder-multiple js-data-example-ajax form-control"
                                         multiple="multiple">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
+                                    {{--<option value="AL">Alabama</option>--}}
+                                    {{--<option value="WY">Wyoming</option>--}}
                                 </select>
                             </div>
 

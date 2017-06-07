@@ -17,7 +17,7 @@
                             {{$list->user->name}} 发表于{{$list->created_at->diffForHumans()}}
                             <br>
                         <div class="article-body">
-                            {{$list->body}}
+                            {{mb_substr(strip_tags($list->body),0,66,"utf-8")}}
                         </div>
                         </p>
                     </div>

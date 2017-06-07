@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: qianchen
- * Date: 2017/5/27
- * Time: 16:04
- */
 
 namespace App\Repositories;
 
 
 use App\Question;
+use App\Topic;
 
 class QuestionRepository
 {
@@ -21,5 +16,23 @@ class QuestionRepository
     public function findQuestionById($id)
     {
         return Question::find($id);
+    }
+
+    //更新问题的标签
+    public function normalizeTopics(array $topics)
+    {
+        return collect($topics)->map(function ($topic) {
+            if (is_numeric($topic)) {
+                Topic::find($topic)->increment('questions_count');
+                return (int)$topic;
+            }
+            $newTopic = Topic::create(['name' => $topic, 'questions_count' => 1]);
+            return $newTopic->id;
+        })->toArray();
+    }
+
+    public function create(array $data)
+    {
+        return Question::create($data);
     }
 }
