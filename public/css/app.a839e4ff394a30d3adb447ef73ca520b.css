@@ -1,5 +1,4 @@
 body, html {
-    height: 100%;
     background-color: #F7F8FA;
 !important;
 }
@@ -9,7 +8,11 @@ a:hover {
 }
 
 #app {
-    background-color: #F7F8FA;
+    min-height: 100vh;
+}
+
+.main-content {
+    margin-top: 20px;
 }
 
 .border-radius > img {
@@ -17,7 +20,11 @@ a:hover {
     border-radius: 10px;
 }
 
-.topics{
+.new-action{
+    margin-bottom: 20px;
+}
+
+.topics {
     margin-bottom: 10px;
 }
 
@@ -26,7 +33,7 @@ a:hover {
     display: flex;
 }
 
-.question-statics{
+.question-statics {
     display: flex;
 }
 
@@ -41,6 +48,10 @@ a:hover {
 
 .statics-count {
     text-align: center;
+}
+
+.user-name-a{
+    color: #222;
 }
 
 
