@@ -12,8 +12,8 @@
 */
 
 Auth::loginUsingId(2);
-Route::get('/', 'ArticleController@index');
-Route::get('/articles/{id}', 'ArticleController@show');
+Route::get('/', 'ArticlesController@index');
+Route::get('/articles/{id}', 'ArticlesController@show');
 
 Auth::routes();
 
@@ -23,4 +23,6 @@ Route::get('/vtr', function () {
     return view('web');
 })->middleware('auth');
 
-Route::resource('/questions', 'QuestionController');
+Route::resource('/questions', 'QuestionsController');
+
+Route::post('/questions/{id}/answer', 'AnswersController@answer');

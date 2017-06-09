@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->text('body');
             $table->integer('user_id')->unsigned();
             $table->integer('comments_count')->default(0);
+            $table->integer('answers_count')->default(0);
             $table->integer('followers_count')->default(1);
             $table->string('close_comment', 8)->default('F');
             $table->string('is_hidden', 8)->default('F');

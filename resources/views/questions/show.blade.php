@@ -103,26 +103,32 @@
                                     </article>
                                 @endforeach
 
-                                <article class="media">
-                                    <figure class="media-left">
-                                        <p class="image is-64x64">
-                                            <img src="http://bulma.io/images/placeholders/128x128.png">
-                                        </p>
-                                    </figure>
-                                    <div class="media-content">
-                                        <div class="field">
-                                            <p class="control">
+                                @if(Auth::check())
+                                    <article class="media">
+                                        <figure class="media-left">
+                                            <p class="image is-64x64 border-radius">
+                                                <img src="{{Auth::user()->avatar}}">
+                                            </p>
+                                        </figure>
+                                        <div class="media-content">
+
+                                            <form action="{{url('questions/'.$inf->id.'/answer')}}" method="post">
+                                                {!! csrf_field() !!}
+                                                <div class="field">
+                                                    <p class="control">
                                                             <textarea class="textarea"
-                                                                      placeholder="填写你的答案..."></textarea>
-                                            </p>
+                                                                      placeholder="填写你的答案..." name="body"></textarea>
+                                                    </p>
+                                                </div>
+                                                <div class="field level-right">
+                                                    <p class="control">
+                                                        <button class="button" type="submit">提交答案</button>
+                                                    </p>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="field level-right">
-                                            <p class="control">
-                                                <button class="button">提交答案</button>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                @endif
                             </div>
                             <div class="column is-4" style="margin-top: -12px;padding-right: 50px">
                                 <div class="card">
@@ -164,16 +170,18 @@
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top: 15px;">
-                                                <a class="button is-success" style="width: 100px"><span
-                                                            style="margin-right: 5px"
-                                                            class="icon"><i
-                                                                class="fa fa-plus"></i></span>关注他</a>
-                                                <a class="button pull-right" style="width: 100px"><span
-                                                            style="margin-right: 5px"
-                                                            class="icon"><i
-                                                                class="fa fa-comments-o"></i></span>发私信</a>
-                                            </div>
+                                            @if(Auth::check())
+                                                @if(Auth::id()!==$inf->user_id)
+                                                    <div style="margin-top: 15px;">
+                                                        <user-follow-button
+                                                                user="{{$inf->user_id}}"></user-follow-button>
+                                                        <a class="button pull-right" style="width: 100px"><span
+                                                                    style="margin-right: 5px"
+                                                                    class="icon"><i
+                                                                        class="fa fa-comments-o"></i></span>发私信</a>
+                                                    </div>
+                                                @endif
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

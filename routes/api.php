@@ -21,8 +21,10 @@ Route::get('user', function () {
     return \App\User::all();
 });
 
-Route::resource('articles', 'Admin\ArticleController');
+Route::resource('articles', 'Admin\ArticlesController');
+Route::post('articles/batch', 'Admin\ArticlesController@batch');
 
-Route::post('articles/batch', 'Admin\ArticleController@batch');
+Route::get('/topics', 'TopicsController@index');
 
-Route::get('/topics','TopicsController@index');
+Route::get('user/followers/{id}', 'UserFollowsController@index');
+Route::post('user/followers', 'UserFollowsController@follow');

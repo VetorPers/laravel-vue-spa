@@ -12,7 +12,8 @@ a:hover {
 }
 
 .main-content {
-    margin-top: 20px;
+    margin: 20px 0;
+    padding: 10px 20px;
 }
 
 .border-radius > img {
@@ -20,7 +21,7 @@ a:hover {
     border-radius: 10px;
 }
 
-.new-action{
+.new-action {
     margin-bottom: 20px;
 }
 
@@ -50,6 +51,6 @@ a:hover {
     text-align: center;
 }
 
-.user-name-a{
+.user-name-a {
     color: #222;
 }
