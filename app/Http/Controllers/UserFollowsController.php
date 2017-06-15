@@ -35,6 +35,7 @@ class UserFollowsController extends Controller
     public function follow(Request $request)
     {
         $user = $this->user->find($request->get('user'));
+
         $followed = Auth::user()->followThisUser($user);
 
         if (count($followed['attached']) > 0) {
@@ -44,7 +45,7 @@ class UserFollowsController extends Controller
         }
 
         $user->decrement('followers_count');
-        Auth::user()->decrement('following_count');
+        Auth::user()->decrement('followings_count');
         return response()->json(['followed' => false]);
     }
 }

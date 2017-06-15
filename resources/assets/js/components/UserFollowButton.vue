@@ -21,7 +21,7 @@
         methods: {
             follow(){
                 let para = {'user': this.user};
-                axios.post('/api/user/followers', {params: para}).then(res=> {
+                axios.post('/api/user/followers', {'user': this.user}).then(res=> {
                     this.followed = res.data.followed;
                 })
             },

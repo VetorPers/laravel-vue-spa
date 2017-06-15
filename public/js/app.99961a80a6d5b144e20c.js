@@ -41433,7 +41433,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             var para = { 'user': this.user };
-            axios.post('/api/user/followers', { params: para }).then(function (res) {
+            axios.post('/api/user/followers', { 'user': this.user }).then(function (res) {
                 _this2.followed = res.data.followed;
             });
         }
