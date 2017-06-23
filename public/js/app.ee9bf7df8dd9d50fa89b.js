@@ -1915,14 +1915,22 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
-    staticClass: "button is-success",
+    staticClass: "button",
+    class: [{
+      'is-success': !_vm.followed
+    }, {
+      'is-light': _vm.followed
+    }],
     staticStyle: {
       "width": "100px"
+    },
+    domProps: {
+      "textContent": _vm._s(_vm.text)
     },
     on: {
       "click": _vm.follow
     }
-  }, [_vm._m(0), _vm._v("关注他")])
+  }, [_vm._m(0)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "icon",
@@ -41412,6 +41420,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
@@ -41420,6 +41429,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         axios.get('/api/user/followers/' + this.user).then(function (res) {
             _this.followed = res.data.followed;
+            //                this.getText();
         });
     },
     data: function data() {
@@ -41435,10 +41445,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var para = { 'user': this.user };
             axios.post('/api/user/followers', { 'user': this.user }).then(function (res) {
                 _this2.followed = res.data.followed;
+                //                    this.getText();
             });
+        },
+        getText: function getText() {
+            this.text = this.followed ? '已关注' : '关注他';
         }
     },
-    computed: {}
+    computed: {
+        text: function text() {
+            return this.followed ? '已关注' : '关注他';
+        }
+    }
 });
 
 /***/ }),

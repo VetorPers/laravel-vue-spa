@@ -172,10 +172,10 @@
 
                                             @if(Auth::check())
                                                 @if(Auth::id()!==$inf->user_id)
-                                                    <div style="margin-top: 15px;">
+                                                    <div style="margin-top: 15px;margin-left: 15px">
                                                         <user-follow-button
                                                                 user="{{$inf->user_id}}"></user-follow-button>
-                                                        <a class="button pull-right" style="width: 100px"><span
+                                                        <a class="button" style="width: 100px"><span
                                                                     style="margin-right: 5px"
                                                                     class="icon"><i
                                                                         class="fa fa-comments-o"></i></span>发私信</a>
