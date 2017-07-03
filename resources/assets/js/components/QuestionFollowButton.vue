@@ -1,14 +1,13 @@
 <template>
-    <a class="button" style="width: 100px" v-on:click="follow" v-html="text"
-       :class="[{'is-success':!followed},{'is-light':followed}]">
-    </a>
+    <a class="button" style="width: 100px" v-text="text" :class="[{'is-success':!followed},{'is-light':followed}]"
+       v-on:click="follow"></a>
 </template>
 
 <script type="text/ecmascript-6">
     export default{
-        props: ['user'],
+        props: ['question'],
         mounted(){
-            axios.get('/api/user/followers/' + this.user).then(res => {
+            axios.get('/api/question/followers/' + this.question).then(res => {
                 this.followed = res.data.followed;
             })
         },
@@ -19,14 +18,14 @@
         },
         methods: {
             follow(){
-                axios.post('/api/user/followers', {'user': this.user}).then(res => {
+                axios.post('/api/question/followers', {'question': this.question}).then(res => {
                     this.followed = res.data.followed;
                 });
             },
         },
         computed: {
             text(){
-                return this.followed ? '取消关注' : `<span style="margin-right: 5px" class="icon"><i class="fa fa-plus"></i></span>关注他`;
+                return this.followed ? '正在关注' : '关注问题';
             }
         },
     }

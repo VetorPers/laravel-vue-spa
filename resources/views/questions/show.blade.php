@@ -20,7 +20,8 @@
                                             {!! $inf->body !!}
                                         </div>
                                         <p>
-                                            <small><span class="icon is-small"><i class="fa fa-comment"></i></span>10条评论
+                                            <small><span class="icon is-small"><i
+                                                            class="fa fa-comment"></i></span>{{$inf->answers_count}}条评论
                                             </small>
                                         </p>
                                     </article>
@@ -37,8 +38,8 @@
                                         </div>
                                     </div>
                                     <div style="margin-top: 50px;">
-                                        <a class="button is-success" style="width: 100px">关注问题</a>
-                                        <a class="button is-info is-outlined" style="width: 100px"><span
+                                        <question-follow-button question="{{$inf->id}}"></question-follow-button>
+                                        <a class="button is-info is-outlined" style="width: 100px" id="answer"><span
                                                     style="margin-right: 5px"
                                                     class="icon"><i
                                                         class="fa fa-pencil-square-o"></i></span>写回答</a>
@@ -69,7 +70,9 @@
                                                     <br>
                                                     {{$answer->body}}
                                                     <br>
-                                                    <small><a>赞</a> · <a>回复</a>
+                                                    <small>
+                                                        <like-this-answer answer="{{$answer->id}}"></like-this-answer>
+                                                        · <a>回复</a>
                                                         · {{$answer->created_at->diffForHumans()}}
                                                     </small>
                                                 </p>
@@ -117,7 +120,8 @@
                                                 <div class="field">
                                                     <p class="control">
                                                             <textarea class="textarea"
-                                                                      placeholder="填写你的答案..." name="body"></textarea>
+                                                                      placeholder="填写你的答案..." name="body"
+                                                                      id="answer-box"></textarea>
                                                     </p>
                                                 </div>
                                                 <div class="field level-right">
@@ -158,15 +162,18 @@
                                             <div class="user-statics">
                                                 <div class="statics-item">
                                                     <div class="statics-text">问题</div>
-                                                    <div class="statics-count"><strong>10</strong></div>
+                                                    <div class="statics-count">
+                                                        <strong>{{$inf->user->questions_count}}</strong></div>
                                                 </div>
                                                 <div class="statics-item">
                                                     <div class="statics-text">回答</div>
-                                                    <div class="statics-count"><strong>10</strong></div>
+                                                    <div class="statics-count">
+                                                        <strong>{{$inf->user->answers_count}}</strong></div>
                                                 </div>
                                                 <div class="statics-item">
                                                     <div class="statics-text">关注者</div>
-                                                    <div class="statics-count"><strong>10</strong></div>
+                                                    <div class="statics-count">
+                                                        <strong>{{$inf->user->followers_count}}</strong></div>
                                                 </div>
                                             </div>
 
@@ -194,3 +201,11 @@
         @endif
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    $('#answer').click(function () {
+        $('#answer-box').focus();
+    });
+</script>
+@endpush

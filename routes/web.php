@@ -12,6 +12,10 @@
 */
 
 Auth::loginUsingId(2);
+
+Route::get('/test',function(){
+   Auth::user()->isQuestionFollows();
+});
 Route::get('/', 'ArticlesController@index');
 Route::get('/articles/{id}', 'ArticlesController@show');
 

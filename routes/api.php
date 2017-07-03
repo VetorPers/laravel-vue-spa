@@ -28,3 +28,9 @@ Route::get('/topics', 'TopicsController@index');
 
 Route::get('user/followers/{id}', 'UserFollowsController@index');
 Route::post('user/followers', 'UserFollowsController@follow');
+
+Route::get('question/followers/{id}', 'QuestionFollowsController@index');
+Route::post('question/followers', 'QuestionFollowsController@follow');
+
+Route::get('answer/followers/{id}', 'AnswerFollowsController@index');
+Route::post('answer/followers', 'AnswerFollowsController@follow');

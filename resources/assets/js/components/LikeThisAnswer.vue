@@ -1,14 +1,12 @@
 <template>
-    <a class="button" style="width: 100px" v-on:click="follow" v-html="text"
-       :class="[{'is-success':!followed},{'is-light':followed}]">
-    </a>
+    <a v-text="text" v-on:click="follow" :class="[{'no-like-a':followed}]">赞</a>
 </template>
 
 <script type="text/ecmascript-6">
     export default{
-        props: ['user'],
+        props: ['answer'],
         mounted(){
-            axios.get('/api/user/followers/' + this.user).then(res => {
+            axios.get('/api/answer/followers/' + this.answer).then(res => {
                 this.followed = res.data.followed;
             })
         },
@@ -19,14 +17,14 @@
         },
         methods: {
             follow(){
-                axios.post('/api/user/followers', {'user': this.user}).then(res => {
+                axios.post('/api/answer/followers', {'answer': this.answer}).then(res => {
                     this.followed = res.data.followed;
                 });
             },
         },
         computed: {
             text(){
-                return this.followed ? '取消关注' : `<span style="margin-right: 5px" class="icon"><i class="fa fa-plus"></i></span>关注他`;
+                return this.followed ? '已赞' : '赞';
             }
         },
     }

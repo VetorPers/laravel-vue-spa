@@ -49,4 +49,40 @@ class User extends Authenticatable
     {
         return $this->followings()->toggle($user);
     }
+
+    //用户关注问题表关系
+    public function questionFollows()
+    {
+        return $this->belongsToMany(Question::class, 'question_follows')->withTimestamps();
+    }
+
+    //用户是否关注问题
+    public function isQuestionFollows($question)
+    {
+        return $this->questionFollows()->where('question_id', $question)->count();
+    }
+
+    //用户关注问题
+    public function questionFollowThis($question)
+    {
+        return $this->questionFollows()->toggle($question);
+    }
+
+    //用户点赞回答表关系
+    public function answerLikes()
+    {
+        return $this->belongsToMany(Answer::class, 'answer_follows')->withTimestamps();
+    }
+
+    //用户是否点赞回答
+    public function isAnswerLike($answer)
+    {
+        return $this->answerLikes()->where('answer_id', $answer)->count();
+    }
+
+    //用户点赞回答
+    public function answerLikeThis($answer)
+    {
+        return $this->answerLikes()->toggle($answer);
+    }
 }
