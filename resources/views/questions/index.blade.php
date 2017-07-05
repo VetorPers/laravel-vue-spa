@@ -7,7 +7,9 @@
                 <div class="columns">
                     <div class="column is-8">
                         <div class="question-head box">
-                            问题列表头部
+                            <div>提问</div>
+                            <div>提问</div>
+                            <div>提问</div>
                         </div>
                         <div class="question-lists">
                             <div class="new-action"><h4 class="ui dividing header"><i class="fa fa-list fa-icon-lg"
@@ -53,7 +55,14 @@
                         </div>
                     </div>
                     <div class="column is-3 is-offset-1">
-                        推荐列表
+                       <div> 推荐列表</div>
+                        <div class="box">
+                            <ul>
+                                <li>laravel的第一个</li>
+                                <li>laravel的第一个</li>
+                                <li>laravel的第一个</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -182,13 +182,33 @@
                                                     <div style="margin-top: 15px;margin-left: 15px">
                                                         <user-follow-button
                                                                 user="{{$inf->user_id}}"></user-follow-button>
-                                                        <a class="button" style="width: 100px"><span
+                                                        <a class="button" id="send-message" style="width: 100px"><span
                                                                     style="margin-right: 5px"
                                                                     class="icon"><i
                                                                         class="fa fa-comments-o"></i></span>发私信</a>
                                                     </div>
                                                 @endif
                                             @endif
+
+                                            {{--发送私信--}}
+                                            <div class="modal send-message-modal">
+                                                <div class="modal-background"></div>
+                                                <div class="modal-card" style="width: 400px">
+                                                    <header class="modal-card-head">
+                                                        <p class="modal-card-title">发送私信</p>
+                                                        <button class="delete send-message-delete"></button>
+                                                    </header>
+                                                    <section class="modal-card-body">
+                                                        <div style="margin-bottom: 6px;"><strong>{{$inf->user->name}}</strong></div>
+                                                        <p class="control"><textarea class="textarea" placeholder="私信内容"></textarea></p>
+                                                    </section>
+                                                    <footer class="modal-card-foot">
+                                                        <a class="button is-success">发送</a>
+                                                        <a class="button send-message-delete">取消</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -206,6 +226,14 @@
 <script>
     $('#answer').click(function () {
         $('#answer-box').focus();
+    });
+
+    $('#send-message').click(function () {
+        $('.send-message-modal').addClass('is-active');
+    });
+
+    $('.send-message-delete').click(function () {
+        $('.send-message-modal').removeClass('is-active');
     });
 </script>
 @endpush

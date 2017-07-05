@@ -30,24 +30,46 @@
             <div class="nav-left">
                 <a class="nav-item">
                     <img src="{{asset('img/vtr.png')}}" alt="">
+                    {{--<a class="nav-item is-tab is-hidden-mobile"--}}
+                       {{--href="{{url('/')}}">首页</a>--}}{{--todo:is-active 设置a标签的点击事件--}}
+                    <a class="nav-item is-tab" href="{{url('questions')}}">
+                        微微的社区
+                    </a>
+                    <div class="nav-item">
+                        <p class="control has-icons-right">
+                            <input class="input" type="text" placeholder="搜索你感兴趣的内容...">
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="nav-item">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a class="button is-primary" href="{{url('questions/create')}}">
+                                    <span>提问</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 </a>
             </div>
-    <span class="nav-toggle">
+            <span class="nav-toggle">
       <span></span>
       <span></span>
       <span></span>
     </span>
             <div class="nav-right nav-menu">
-                <a class="nav-item is-tab is-hidden-mobile" href="{{url('/')}}">首页</a>{{--todo:is-active 设置a标签的点击事件--}}
-                <a class="nav-item is-tab" href="{{url('questions')}}">
-                    微微的社区
-                </a>
-                <a class="nav-item is-tab" href="{{url('questions/create')}}">提问</a>
+                <a href="" class="nav-item is-tab"><span class="icon"><i class="fa fa-bell"></i></span></a>
+                <a href="" class="nav-item is-tab"><span class="icon"><i class="fa fa-commenting"></i></span></a>
                 @if (Auth::guest())
                     <a class="nav-item is-tab">登录</a>
                     <a class="nav-item is-tab">注册</a>
                 @else
-                    <a class="nav-item is-tab">退出</a>
+                    <div class="nav-item is-tab"><img src="{{asset(Auth::user()->avatar)}}" alt=""
+                                                      style="border: 1px solid #7a7a7a;border-radius:14px">
+                    </div>
+                    {{--<a class="nav-item is-tab">退出</a>--}}
                 @endif
             </div>
         </div>
