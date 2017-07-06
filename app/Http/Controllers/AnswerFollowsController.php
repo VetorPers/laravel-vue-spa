@@ -22,7 +22,7 @@ class AnswerFollowsController extends Controller
 
     public function index($id)
     {
-        $followed = Auth::user()->isAnswerLike($id);
+        $followed = Auth::guard('api')->user()->isAnswerLike($id);
         if ($followed) {
             return response()->json(['followed' => true]);
         }
@@ -33,7 +33,7 @@ class AnswerFollowsController extends Controller
     {
         $id = $request->get('answer');
         $answer = $this->answer->findAnswerById($id);
-        $followed = Auth::user()->answerLikeThis($id);
+        $followed = Auth::guard('api')->user()->answerLikeThis($id);
 
         if (count($followed['attached']) > 0) {
             $answer->increment('votes_count');

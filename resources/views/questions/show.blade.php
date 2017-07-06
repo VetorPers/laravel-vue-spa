@@ -37,13 +37,15 @@
                                             <div class="statics-count"><strong>100</strong></div>
                                         </div>
                                     </div>
-                                    <div style="margin-top: 50px;">
-                                        <question-follow-button question="{{$inf->id}}"></question-follow-button>
-                                        <a class="button is-info is-outlined" style="width: 100px" id="answer"><span
-                                                    style="margin-right: 5px"
-                                                    class="icon"><i
-                                                        class="fa fa-pencil-square-o"></i></span>写回答</a>
-                                    </div>
+                                    @if(Auth::check())
+                                        <div style="margin-top: 50px;">
+                                            <question-follow-button question="{{$inf->id}}"></question-follow-button>
+                                            <a class="button is-info is-outlined" style="width: 100px" id="answer"><span
+                                                        style="margin-right: 5px"
+                                                        class="icon"><i
+                                                            class="fa fa-pencil-square-o"></i></span>写回答</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -71,9 +73,12 @@
                                                     {{$answer->body}}
                                                     <br>
                                                     <small>
-                                                        <like-this-answer answer="{{$answer->id}}"></like-this-answer>
-                                                        · <a>回复</a>
-                                                        · {{$answer->created_at->diffForHumans()}}
+                                                        @if(Auth::check())
+                                                            <like-this-answer
+                                                                    answer="{{$answer->id}}"></like-this-answer>
+                                                            · <a>回复</a>·
+                                                        @endif
+                                                        {{$answer->created_at->diffForHumans()}}
                                                     </small>
                                                 </p>
                                             </div>
@@ -198,14 +203,24 @@
                                                         <p class="modal-card-title">发送私信</p>
                                                         <button class="delete send-message-delete"></button>
                                                     </header>
-                                                    <section class="modal-card-body">
-                                                        <div style="margin-bottom: 6px;"><strong>{{$inf->user->name}}</strong></div>
-                                                        <p class="control"><textarea class="textarea" placeholder="私信内容"></textarea></p>
-                                                    </section>
-                                                    <footer class="modal-card-foot">
-                                                        <a class="button is-success">发送</a>
-                                                        <a class="button send-message-delete">取消</a>
-                                                    </footer>
+                                                    <form action="{{url('/messages')}}" method="post">
+                                                        {!! csrf_field() !!}
+                                                        <section class="modal-card-body">
+                                                            <div style="margin-bottom: 6px;">
+                                                                <strong>{{$inf->user->name}}</strong>
+                                                                <input type="hidden" value="{{$inf->user_id}}"
+                                                                       name="to_user_id">
+                                                            </div>
+                                                            <p class="control"><textarea class="textarea"
+                                                                                         placeholder="私信内容"
+                                                                                         name="body"></textarea>
+                                                            </p>
+                                                        </section>
+                                                        <footer class="modal-card-foot">
+                                                            <button class="button is-success" type="submit">发送</button>
+                                                            <a class="button send-message-delete">取消</a>
+                                                        </footer>
+                                                    </form>
                                                 </div>
                                             </div>
 

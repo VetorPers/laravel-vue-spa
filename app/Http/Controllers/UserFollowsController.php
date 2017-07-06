@@ -25,7 +25,7 @@ class UserFollowsController extends Controller
     {
         $user = $this->user->find($id);
         $followers = $user->followers()->pluck('follower_id')->toArray();
-        if (in_array(Auth::id(), $followers)) {
+        if (in_array(Auth::guard('api')->id(), $followers)) {
             return response()->json(['followed' => true]);
         }
         return response()->json(['followed' => false]);
@@ -36,16 +36,16 @@ class UserFollowsController extends Controller
     {
         $user = $this->user->find($request->get('user'));
 
-        $followed = Auth::user()->followThisUser($user);
+        $followed = Auth::guard('api')->user()->followThisUser($user);
 
         if (count($followed['attached']) > 0) {
             $user->increment('followers_count');
-            Auth::user()->increment('followings_count');
+            Auth::guard('id')->user()->increment('followings_count');
             return response()->json(['followed' => true]);
         }
 
         $user->decrement('followers_count');
-        Auth::user()->decrement('followings_count');
+        Auth::guard('id')->user()->decrement('followings_count');
         return response()->json(['followed' => false]);
     }
 }

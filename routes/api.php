@@ -26,11 +26,13 @@ Route::post('articles/batch', 'Admin\ArticlesController@batch');
 
 Route::get('/topics', 'TopicsController@index');
 
-Route::get('user/followers/{id}', 'UserFollowsController@index');
-Route::post('user/followers', 'UserFollowsController@follow');
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('user/followers/{id}', 'UserFollowsController@index');
+    Route::post('user/followers', 'UserFollowsController@follow');
 
-Route::get('question/followers/{id}', 'QuestionFollowsController@index');
-Route::post('question/followers', 'QuestionFollowsController@follow');
+    Route::get('question/followers/{id}', 'QuestionFollowsController@index');
+    Route::post('question/followers', 'QuestionFollowsController@follow');
 
-Route::get('answer/followers/{id}', 'AnswerFollowsController@index');
-Route::post('answer/followers', 'AnswerFollowsController@follow');
+    Route::get('answer/followers/{id}', 'AnswerFollowsController@index');
+    Route::post('answer/followers', 'AnswerFollowsController@follow');
+});

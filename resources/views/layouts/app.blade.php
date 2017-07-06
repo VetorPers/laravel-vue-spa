@@ -30,8 +30,6 @@
             <div class="nav-left">
                 <a class="nav-item">
                     <img src="{{asset('img/vtr.png')}}" alt="">
-                    {{--<a class="nav-item is-tab is-hidden-mobile"--}}
-                       {{--href="{{url('/')}}">首页</a>--}}{{--todo:is-active 设置a标签的点击事件--}}
                     <a class="nav-item is-tab" href="{{url('questions')}}">
                         微微的社区
                     </a>
@@ -54,26 +52,32 @@
                     </div>
                 </a>
             </div>
-            <span class="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
             <div class="nav-right nav-menu">
                 <a href="" class="nav-item is-tab"><span class="icon"><i class="fa fa-bell"></i></span></a>
-                <a href="" class="nav-item is-tab"><span class="icon"><i class="fa fa-commenting"></i></span></a>
+                <a href="{{url('/messages')}}" class="nav-item is-tab"><span class="icon"><i
+                                class="fa fa-commenting"></i></span></a>
                 @if (Auth::guest())
-                    <a class="nav-item is-tab">登录</a>
-                    <a class="nav-item is-tab">注册</a>
+                    <a class="nav-item is-tab" href="{{url('/login')}}">登录</a>
+                    <a class="nav-item is-tab" href="{{url('/register')}}">注册</a>
                 @else
-                    <div class="nav-item is-tab"><img src="{{asset(Auth::user()->avatar)}}" alt=""
-                                                      style="border: 1px solid #7a7a7a;border-radius:14px">
+                    <div class="setting">
+                        <a class="nav-item is-tab" data-toggle="dropdown"><img
+                                    src="{{asset(Auth::user()->avatar)}}" alt=""
+                                    style="border: 1px solid #7a7a7a;border-radius:14px">
+                        </a>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li>
+                                <a href="#"><i class="fa fa-user fa-icon-lg"></i> 我的主页</a>
+                                <a href="#"><i class="fa fa-user fa-icon-lg"></i> 我的主页</a>
+                                <a href="{{url('/logout')}}"><i class="fa fa-user fa-icon-lg"></i> 退出</a>
+                            </li>
+                        </ul>
                     </div>
-                    {{--<a class="nav-item is-tab">退出</a>--}}
                 @endif
             </div>
         </div>
     </nav>
+
 
     @yield('content')
 </div>

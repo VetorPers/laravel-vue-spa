@@ -11,11 +11,12 @@
 |
 */
 
-Auth::loginUsingId(2);
+//Auth::logout(2);
 
-Route::get('/test',function(){
-   Auth::user()->isQuestionFollows();
+Route::get('/test', function () {
+    Auth::user()->isQuestionFollows();
 });
+Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', 'ArticlesController@index');
 Route::get('/articles/{id}', 'ArticlesController@show');
 
@@ -30,3 +31,5 @@ Route::get('/vtr', function () {
 Route::resource('/questions', 'QuestionsController');
 
 Route::post('/questions/{id}/answer', 'AnswersController@answer');
+
+Route::resource('/messages', 'MessageController');

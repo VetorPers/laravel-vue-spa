@@ -23,7 +23,7 @@ class QuestionFollowsController extends Controller
 
     public function index($id)
     {
-        $followed = Auth::user()->isQuestionFollows($id);
+        $followed = Auth::guard('api')->user()->isQuestionFollows($id);
         if ($followed) {
             return response()->json(['followed' => true]);
         }
@@ -34,7 +34,7 @@ class QuestionFollowsController extends Controller
     {
         $id = $request->get('question');
         $question = $this->question->findQuestionById($id);
-        $followed = Auth::user()->questionFollowThis($id);
+        $followed = Auth::guard('api')->user()->questionFollowThis($id);
 
         if (count($followed['attached']) > 0) {
             $question->increment('followers_count');

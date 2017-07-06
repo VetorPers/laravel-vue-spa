@@ -85,4 +85,16 @@ class User extends Authenticatable
     {
         return $this->answerLikes()->toggle($answer);
     }
+
+    //发送的私信
+    public function fromMessages()
+    {
+        return $this->hasMany(Message::class, 'from_user_id');
+    }
+
+    //收到的私信
+    public function toMessages()
+    {
+        return $this->hasMany(Message::class, 'to_user_id');
+    }
 }
