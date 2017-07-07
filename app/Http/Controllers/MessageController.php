@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMessageRequest;
+use App\Notifications\SendMessageNotification;
 use App\Repositories\MessageRepository;
 use Illuminate\Http\Request;
 use Auth;
@@ -53,7 +54,8 @@ class MessageController extends Controller
             'body' => $request->get('body')
         ];
 
-        $this->message->create($data);
+        $mes = $this->message->create($data);
+        if ($mes) $mes->toUser->notify(new SendMessageNotification($mes));
         return back();
     }
 

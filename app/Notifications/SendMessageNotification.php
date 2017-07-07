@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Message;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,14 +12,16 @@ class SendMessageNotification extends Notification
 {
     use Queueable;
 
+    protected $message;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Message $message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -40,10 +43,10 @@ class SendMessageNotification extends Notification
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toDatabase($notifiable)
-    {
-       return ['name'=>];
-    }
+//    public function toDatabase($notifiable)
+//    {
+//       return [];
+//    }
 
     /**
      * Get the array representation of the notification.
@@ -55,7 +58,7 @@ class SendMessageNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'name' => $this->message->fromUser->name,
         ];
     }
 }

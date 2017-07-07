@@ -23,7 +23,7 @@
         Laravel.apiToken = "{{Auth::check() ? 'Bearer '.Auth::user()->api_token : 'Bearer '}}";
     </script>
 </head>
-<body>
+<body style="overflow-x:visible;">
 <div id="app">
     <nav class="nav has-shadow">
         <div class="container">
@@ -53,7 +53,8 @@
                 </a>
             </div>
             <div class="nav-right nav-menu">
-                <a href="" class="nav-item is-tab"><span class="icon"><i class="fa fa-bell"></i></span></a>
+                <a href="{{url('/notifications')}}" class="nav-item is-tab"><span class="icon"><i
+                                class="fa fa-bell"></i></span></a>
                 <a href="{{url('/messages')}}" class="nav-item is-tab"><span class="icon"><i
                                 class="fa fa-commenting"></i></span></a>
                 @if (Auth::guest())
