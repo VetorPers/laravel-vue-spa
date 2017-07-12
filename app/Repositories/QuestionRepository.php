@@ -15,7 +15,7 @@ class QuestionRepository
 
     public function findQuestionById($id)
     {
-        return Question::find($id);
+        return Question::with('answers.comments')->find($id);
     }
 
     //更新问题的标签

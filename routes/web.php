@@ -35,3 +35,5 @@ Route::post('/questions/{id}/answer', 'AnswersController@answer');
 Route::resource('/messages', 'MessageController');
 
 Route::get('/notifications', 'NotificationController@index');
+
+Route::post('/comments', 'CommentsController@store');

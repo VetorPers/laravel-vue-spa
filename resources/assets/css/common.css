@@ -55,6 +55,12 @@ a:hover {
     color: #222;
 }
 
-.no-like-a{
+.no-like-a {
     color: #000;
+}
+
+.question-head > li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px;
 }

@@ -21,7 +21,7 @@
                                         </div>
                                         <p>
                                             <small><span class="icon is-small"><i
-                                                            class="fa fa-comment"></i></span>{{$inf->answers_count}}条评论
+                                                            class="fa fa-comment"></i></span>{{$inf->answers_count}}条回答
                                             </small>
                                         </p>
                                     </article>
@@ -80,31 +80,33 @@
                                                         @endif
                                                         {{$answer->created_at->diffForHumans()}}
                                                     </small>
+
                                                 </p>
+                                                <form action="{{url('/comments')}}" method="post">
+                                                    {!! csrf_field() !!}
+                                                    <input type="hidden" name="answer_id" value="{{$answer->id}}">
+                                                    <div class="field">
+                                                        <p class="control">
+                                                            <input class="input" type="text" name="body">
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="field is-grouped pull-right">
+                                                        <p class="control">
+                                                            <button class="button is-small is-link">取消</button>
+                                                        </p>
+                                                        <p class="control">
+                                                            <button class="button is-small is-primary">提交</button>
+                                                        </p>
+                                                    </div>
+                                                </form>
                                             </div>
 
                                             @foreach($answer->comments as $comment)
-                                                <article class="media">
-                                                    <figure class="media-left">
-                                                        <p class="image is-48x48 border-radius">
-                                                            <img src="{{$comment->user->avatar}}">
-                                                        </p>
-                                                    </figure>
-                                                    <div class="media-content">
-                                                        <div class="content">
-                                                            <p>
-                                                                <strong>{{$comment->user->name}}</strong>
-                                                                <br>
-                                                                {{$comment->body}}
-                                                                <br>
-                                                                <small><a>赞</a> · <a>回复</a>
-                                                                    · {{$comment->created_at->diffForHumans()}}
-                                                                </small>
-                                                            </p>
-                                                        </div>
-
-                                                    </div>
-                                                </article>
+                                                <strong>{{$comment->user->name}}:</strong>
+                                                {{$comment->body}}
+                                                <small class="pull-right">{{$comment->created_at->diffForHumans()}}</small>
+                                                <br>
                                             @endforeach
 
                                         </div>

@@ -7,9 +7,13 @@
                 <div class="columns">
                     <div class="column is-8">
                         <div class="question-head box">
-                            <div>提问</div>
-                            <div>提问</div>
-                            <div>提问</div>
+                            <li><a href="#" style="color:#7a7a7a;"><span style="margin-right: 5px" class="icon"><i
+                                                class="fa fa-question-circle-o"></i></span>提问</a>
+                            </li>
+                            <li><a href="#" style="color:#7a7a7a;"><span style="margin-right: 5px" class="icon"><i
+                                                class="fa fa-navicon"></i></span>回答</a></li>
+                            <li><a href="#" style="color:#7a7a7a;"><span style="margin-right: 5px" class="icon"><i
+                                                class="fa fa-edit"></i></span>写文章</a></li>
                         </div>
                         <div class="question-lists">
                             <div class="new-action"><h4 class="ui dividing header"><i class="fa fa-list fa-icon-lg"
@@ -28,7 +32,8 @@
                                             <p>
                                                 <strong><a href="{{url('questions/'.$list->id)}}">{{$list->title}}</a></strong>
                                                 <br>
-                                                <strong><a href="" class="user-name-a">{{$list->user->name}}</a></strong>
+                                                <strong><a href=""
+                                                           class="user-name-a">{{$list->user->name}}</a></strong>
                                                 <small>发表于{{$list->created_at->diffForHumans()}}</small>
                                                 <br>
                                             <div class="article-body">
@@ -55,12 +60,15 @@
                         </div>
                     </div>
                     <div class="column is-3 is-offset-1">
-                       <div> 推荐列表</div>
+                        <div style="margin-bottom: 10px"> 推荐列表</div>
                         <div class="box">
                             <ul>
-                                <li>laravel的第一个</li>
-                                <li>laravel的第一个</li>
-                                <li>laravel的第一个</li>
+                                <li>Laravel中文文档</li>
+                                <li>Lumen中文文档</li>
+                                <li>Laravel速查表</li>
+                                <li>Laravel远程工作</li>
+                                <li>vtr的由来</li>
+                                <li>Composer中文镜像</li>
                             </ul>
                         </div>
                     </div>
