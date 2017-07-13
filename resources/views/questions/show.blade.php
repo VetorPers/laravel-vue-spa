@@ -76,38 +76,40 @@
                                                         @if(Auth::check())
                                                             <like-this-answer
                                                                     answer="{{$answer->id}}"></like-this-answer>
-                                                            · <a>回复</a>·
+                                                            · <a class="no-like-a">回复</a>·
                                                         @endif
                                                         {{$answer->created_at->diffForHumans()}}
                                                     </small>
 
                                                 </p>
-                                                <form action="{{url('/comments')}}" method="post">
-                                                    {!! csrf_field() !!}
-                                                    <input type="hidden" name="answer_id" value="{{$answer->id}}">
-                                                    <div class="field">
-                                                        <p class="control">
-                                                            <input class="input" type="text" name="body">
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="field is-grouped pull-right">
-                                                        <p class="control">
-                                                            <button class="button is-small is-link">取消</button>
-                                                        </p>
-                                                        <p class="control">
-                                                            <button class="button is-small is-primary">提交</button>
-                                                        </p>
-                                                    </div>
-                                                </form>
                                             </div>
 
                                             @foreach($answer->comments as $comment)
-                                                <strong>{{$comment->user->name}}:</strong>
-                                                {{$comment->body}}
-                                                <small class="pull-right">{{$comment->created_at->diffForHumans()}}</small>
-                                                <br>
+                                                <div style="margin-right: 50px">
+                                                    <strong>{{$comment->user->name}}:</strong>
+                                                    {{$comment->body}}
+                                                    <small class="pull-right">{{$comment->created_at->diffForHumans()}}</small>
+                                                    <br>
+                                                </div>
                                             @endforeach
+                                            <form action="{{url('/comments')}}" method="post">
+                                                {!! csrf_field() !!}
+                                                <input type="hidden" name="answer_id" value="{{$answer->id}}">
+                                                <div class="field">
+                                                    <p class="control">
+                                                        <input class="input" type="text" name="body">
+                                                    </p>
+                                                </div>
+
+                                                <div class="field is-grouped pull-right">
+                                                    <p class="control">
+                                                        <button class="button is-small is-link">取消</button>
+                                                    </p>
+                                                    <p class="control">
+                                                        <button class="button is-small is-primary">提交</button>
+                                                    </p>
+                                                </div>
+                                            </form>
 
                                         </div>
                                     </article>

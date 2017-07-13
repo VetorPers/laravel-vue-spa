@@ -1,5 +1,5 @@
 <template>
-    <a v-text="text" v-on:click="follow" :class="[{'no-like-a':followed}]">赞</a>
+    <a v-text="text" v-on:click="follow" class="no-like-a">赞</a>
 </template>
 
 <script type="text/ecmascript-6">
