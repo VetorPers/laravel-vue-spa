@@ -28,7 +28,10 @@
     <nav class="nav has-shadow">
         <div class="container">
             <div class="nav-left">
-                <div style="margin-top: 3px"><img src="{{asset('img/vtr.jpg')}}" alt="" width="58" height="46"></div>
+                <div class="top-img-box" style="margin-top: 2px"><img src="{{asset('img/vtr.jpg')}}" alt="" width="48"
+                                                                      height="48"
+                                                                      style="border:1px solid #7a7a7a;border-radius:26px">
+                </div>
                 <a class="nav-item">
                     <a class="nav-item is-tab" href="{{url('questions')}}">
                         微微的社区
@@ -80,7 +83,9 @@
     </nav>
 
 
-    @yield('content')
+    <div style="height: 100%">
+        @yield('content')
+    </div>
 </div>
 
 <!-- Scripts -->
