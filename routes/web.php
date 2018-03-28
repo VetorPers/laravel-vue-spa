@@ -17,7 +17,8 @@ Route::get('/test', function () {
     Auth::user()->isQuestionFollows();
 });
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/', 'ArticlesController@index');
+//Route::get('/', 'ArticlesController@index');
+Route::get('/', 'QuestionsController@index');
 Route::get('/articles/{id}', 'ArticlesController@show');
 
 Auth::routes();
@@ -34,6 +35,6 @@ Route::post('/questions/{id}/answer', 'AnswersController@answer');
 
 Route::resource('/messages', 'MessageController');
 
-Route::get('/notifications', 'NotificationController@index');
+Route::get('/notifications', 'NotificationController@index')->middleware('auth');
 
 Route::post('/comments', 'CommentsController@store');
